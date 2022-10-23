@@ -12,15 +12,19 @@ const LineChart = ({coinHistory, currentPrice, coinName}) => {
     coinPrice.push(coinHistory.data.history[i].price)
   }
   for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
-    coinTimestamp.push(new Date(coinHistory?.data?.history[i].timestamp).toLocaleDateString());
+    // Timestamp from api is given in seconds so we multiply by 1000 to convert it is ms
+    coinTimestamp.push(new Date(coinHistory?.data?.history[i].timestamp*1000).toLocaleDateString());
   }
+  // Reversing the arrays so that the graph starts from the left
+  const rev_coinPrice=coinPrice.reverse()
+  const rev_coinTimestamp=coinTimestamp.reverse()
 
   const data = {
-    labels: coinTimestamp,
+    labels: rev_coinTimestamp,
     datasets: [
         {
             label: 'Price In USD',
-            data: coinPrice,
+            data: rev_coinPrice,
             fill: false,
             backgroundColor: '#0071bd',
             borderColor: '#0071bd',
