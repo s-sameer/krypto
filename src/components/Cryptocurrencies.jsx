@@ -4,6 +4,7 @@ import { Card, Row, Col, Input } from "antd"
 // Whenever we need to use the data from an api, we just need to import the hook that fetches that data
 import { useGetCryptosQuery } from "../services/cryptoApi"
 import { useState, useEffect } from "react"
+import Loader from "./Loader"
 
 const Cryptocurrencies = ({simplified}) => {
   const count = simplified ? 10:100
@@ -16,7 +17,7 @@ const Cryptocurrencies = ({simplified}) => {
     const filteredData = cryptosList?.data?.coins.filter((coin) => coin.name.toLowerCase().includes(searchTerm))
     setCryptos(filteredData)
   }, [cryptosList, searchTerm]) 
-  if (isFetching) return 'Loading...'
+  if (isFetching) return <Loader/>
   return (
     <>
     {!simplified &&(

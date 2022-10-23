@@ -7,7 +7,7 @@ export const cryptoApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: baseUrl,
         prepareHeaders: (headers)=>{
-            headers.set('X-RapidAPI-Key', 'a328134f75msh22e32d3f9f7d708p1b9470jsn35a7f3161c03')
+            headers.set('X-RapidAPI-Key', process.env.COINRANKING_API_KEY)
             return headers
         }
     }),

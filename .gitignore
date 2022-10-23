@@ -25,3 +25,4 @@ dist-ssr
 notes.js
 redux-notes.js
 redux-toolkit-notes.js
+.env
